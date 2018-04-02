@@ -1,0 +1,31 @@
+{
+  "name": "robogui-electron",
+  "version": "1.0.0",
+  "description": "Application for BSM Robots",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "keywords": [
+    "git",
+    "BSM",
+    "Robo",
+    "Robot",
+    "GUI",
+    "Red",
+    "Knights"
+  ],
+  "author": "Andrew Voss",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.8.4",
+    "electron-rebuild": "^1.7.3"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.1"
+  }
+}

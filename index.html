@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>RoboGUI</title>
+  </head>
+  <body>
+    <h1>Welcome To RoboGUI</h1>
+      <input type="submit" value="Run Controller-Support"
+      onclick="execPy('Controller.py');"/>
+
+      <input type="submit" value="Robo-HTML"
+      onclick="window.open('robo-html/index.html');"/>
+
+    <p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>
+
+    <h3>Version</h3>
+    RoboGUI v1.0.0 <br />
+    Node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+  </body>
+  <script>
+    function execPy(py){
+    require('child_process').exec('python ' + py, function (err, stdout, stderr) {
+    if (err) {
+        // Ooops.
+        // console.log(stderr);
+        return console.log(err);
+    }
+
+    // Done.
+    console.log(stdout);
+    });
+    }
+  </script>
+
+</html>
