@@ -1,5 +1,5 @@
 {
-  "name": "robogui-electron",
+  "name": "RoboGUI-Electron",
   "version": "1.0.0",
   "description": "Application for BSM Robots",
   "main": "main.js",
@@ -23,6 +23,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^1.8.4",
+    "electron-installer-dmg": "^0.2.1",
+    "electron-packager": "^11.2.0",
     "electron-rebuild": "^1.7.3"
   },
   "dependencies": {
