@@ -40,13 +40,11 @@ const {app, BrowserWindow, Menu} = require('electron')
       label: 'Page',
       submenu: [
         {
-          label: 'main',
-          role: 'main',
+          label: 'Main',
           click(){win.loadURL(`file://${__dirname}/index.html`)}
         },
         {
-          label: 'robo-html',
-          role: 'Robo-HTML',
+          label: 'Robo-HTML',
           click(){win.loadURL('http://192.168.21.113')}
         }
       ]
