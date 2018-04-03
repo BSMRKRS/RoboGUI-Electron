@@ -6,14 +6,18 @@
   </head>
   <body text = 'white'>
     <h1>Welcome To RoboGUI</h1>
+
       <input type="submit" value="Run Controller-Support"
       onclick="execPy('Controller.py 192.168.21.113');"/>
 
-      <input type="submit" value="Robo-HTML"
-      onclick="window.open('http://192.168.21.113');"/>
+      <form action="http://192.168.21.113">
+        <input type="submit" value="Robo-HTML" />
+      </form>
 
     <!--<p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>-->
-    <!--<p><img src='http://192.168.21.111:8080?action=stream'></img></p>-->
+    <!--<p><img src='http://192.168.21.113:8080?action=stream'></img></p>-->
+
+    <!-- Video scream srs is currently temp for testing -->
     <p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img>
       <img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img>
       <img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>
