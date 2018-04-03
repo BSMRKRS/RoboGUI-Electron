@@ -3,11 +3,11 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>RoboGUI</title>
+    <title>RoboGUI-Electron</title>
   </head>
 
   <body onload='camera();' text = 'white'>
-    <h1>Welcome To RoboGUI</h1>
+    <h1>Welcome To RoboGUI-Electron</h1>
 
       <input type="submit" value="Run Controller-Support"
       onclick="execPy('Controller.py 192.168.21.113');"/>
@@ -49,7 +49,9 @@
 
     function camera(){
       for (var i in cameras){
-        document.getElementById('stream'+i.toString()).src="http://"+cameras[i]+":8080?action=stream";
+        document.getElementById('stream'+i.toString()).src="http://"+cameras[i]+":8080?action=stream&resolution=320x240";
+        document.getElementById('stream'+i.toString()).height="240"
+        document.getElementById('stream'+i.toString()).width="320"
         console.log(i + ': ' + cameras[i]);
       }
     }
