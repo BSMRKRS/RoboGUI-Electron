@@ -4,7 +4,7 @@ This project is a GUI for BSM robots that is created using electron
 
 ## How to run
 
-Start the GUI run this command; You may need to changed the ip addresses in the index.html
+Start the GUI run this command; You may need to changed the ip addresses in the connections.js
 ```
 $ npm start
 ```

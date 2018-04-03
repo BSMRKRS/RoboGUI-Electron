@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="UTF-8">
     <title>RoboGUI</title>
   </head>
-  <body text = 'white'>
+
+  <body onload='camera();' text = 'white'>
     <h1>Welcome To RoboGUI</h1>
 
       <input type="submit" value="Run Controller-Support"
@@ -17,13 +19,14 @@
     <!--<p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>-->
     <!--<p><img src='http://192.168.21.113:8080?action=stream'></img></p>-->
 
-    <!-- Video scream srs is currently temp for testing -->
-    <p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img>
-      <img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img>
-      <img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>
-    <p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img>
-      <img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img>
-      <img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>
+    <!-- Set of 18 cameras -->
+    <p><img id='stream0'><img id='stream1'><img id='stream2'></p>
+    <p><img id='stream3'><img id='stream4'><img id='stream5'></p>
+    <p><img id='stream6'><img id='stream7'><img id='stream8'></p>
+
+    <p><img id='stream9'><img id='stream10'><img id='stream11'></p>
+    <p><img id='stream12'><img id='stream13'><img id='stream14'></p>
+    <p><img id='stream15'><img id='stream16'><img id='stream17'></p>
 
     <h3>Version</h3>
     RoboGUI v1.0.0 <br />
@@ -31,18 +34,24 @@
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
   </body>
+
+  <script type="text/javascript" src="connections.js"></script>
+
   <script>
     function execPy(py){
-    require('child_process').exec('python ' + py, function (err, stdout, stderr) {
-    if (err) {
-        // Ooops.
-        // console.log(stderr);
-        return console.log(err);
+      require('child_process').exec('python ' + py, function (err, stdout, stderr) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log(stdout);
+      });
     }
 
-    // Done.
-    console.log(stdout);
-    });
+    function camera(){
+      for (var i in cameras){
+        document.getElementById('stream'+i.toString()).src="http://"+cameras[i]+":8080?action=stream";
+        console.log(i + ': ' + cameras[i]);
+      }
     }
   </script>
 
