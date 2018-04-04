@@ -7,8 +7,8 @@ This project is a GUI for BSM robots that is created using electron
 
 ## Download & Build:
 
-[Download](https://github.com/avoss19/RoboGUI-Electron/releases)
-[Build](/docs/Build.md/)
+[Download](https://github.com/avoss19/RoboGUI-Electron/releases) <br />
+[Build](/docs/Build.md/) <br />
 [Change Log](/docs/Changes.md/)
 
 
