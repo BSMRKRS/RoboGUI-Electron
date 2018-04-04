@@ -6,30 +6,28 @@
     <title>RoboGUI-Electron</title>
   </head>
 
-  <body onload='camera();' text = 'white'>
+  <body onload='start();' text = 'white'>
     <script>
     const electron = require('electron');
     const path = require('path');
     const appPath = (electron.app || electron.remote.app).getPath('userData');
     const ip = appPath+"/ip.js";
-
     </script>
+
     <script type="text/javascript" id='ip'></script>
     <script>document.getElementById('ip').src=ip</script>
 
     <h1>RoboGUI-Electron</h1>
 
-      <input type="submit" value="Run Controller-Support"
-      onclick="Controller();"/>
+    <input type="submit" value="Run Controller-Support"
+    onclick="Controller();"/>
 
-      <input type="submit" value="Install Controller"
-      onclick="ControllerInstall();"/>
+    <input type="submit" value="Install Controller"
+    onclick="ControllerInstall();"/>
 
-      <form id='RoboHTML'>
-        <input type="submit" value="Robo-HTML" />
-      </form>
-
-      <script>document.getElementById('RoboHTML').action=RoboHTML</script>
+    <form id='RoboHTML' method="get">
+      <input type="submit" value="Robo-HTML" />
+    </form>
 
     <!--<p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>-->
     <!--<p><img src='http://192.168.21.113:8080?action=stream'></img></p>-->
@@ -51,6 +49,11 @@
   </body>
 
   <script>
+    function start(){
+      camera();
+      document.getElementById('RoboHTML').action=roboHTML;
+    }
+
     function Controller(){
       require('child_process').exec("python ~/Library/'Application Support'/robogui-electron/Controller.py " + controller, function (err, stdout, stderr) {
         if (err) {

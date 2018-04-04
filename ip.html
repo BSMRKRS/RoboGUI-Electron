@@ -5,11 +5,11 @@
 
   <h1>Config IP Addresses</h1>
 
-  <p>* Format ip with quotes around each ip & refresh is needed after pressing "Okay"</p>
+  <p>* Cameras ips requires quotes ip & refresh is needed after pressing "Okay"</p>
 
-  <p>Camera: <input type="text" id='cameraIP'></p>
-  <p>Controller: <input type="text" id='controllerIP'></p>
-  <p>RoboHTML: <input type="text" id='roboHTMLIP'></p>
+  <p>Cameras: <input type="text" id='cameraIP' value="'192.168.21.xxx'"></p>
+  <p>Controller: <input type="text" id='controllerIP' value="192.168.21.xxx"></p>
+  <p>RoboHTML: <input type="text" id='roboHTMLIP' value="192.168.21.xxx"></p>
 
   <input type="submit" value="Okay"
   onclick="ipSave();"/>
@@ -29,11 +29,11 @@
 
     if (camera == '') {camera = "''"}
     if (controller == '') {controller = "''"}
-    if (roboHTML == '') {roboHTML = "''"}
+    if (roboHTML == '') {roboHTML = ''}
 
     var fs = require('fs');
 
-    fs.writeFile(appPath+"/ip.js", "cameras = ["+camera+"]\ncontroller = "+controller+"\nroboHTML = "+roboHTML, function(err) {
+    fs.writeFile(appPath+"/ip.js", "cameras = ["+camera+"]\ncontroller = '"+controller+"'\nroboHTML = 'http://"+roboHTML+"'", function(err) {
     if(err) {
         return console.log(err);
     }

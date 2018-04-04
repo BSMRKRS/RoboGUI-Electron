@@ -45,10 +45,6 @@ const {app, BrowserWindow, Menu} = require('electron')
           label: 'Main',
           click(){win.loadURL(`file://${__dirname}/index.html`)}
         },
-        {
-          label: 'Robo-HTML',
-          click(){win.loadURL('http://192.168.21.113')}
-        },
         {type: 'separator'},
         {
           label: 'Config IP Addresses',
