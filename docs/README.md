@@ -25,13 +25,13 @@ $ npm start
 On Robot w/ RoboPi Hat
 ```
 $ curl -O https://raw.githubusercontent.com/avoss19/RoboGUI-Electron/master/hostRoboPi.py
-$ python host.py
+$ python hostRoboPi.py
 ```
 
 On Robot w/ OpenCM
 ```
 $ curl -O https://raw.githubusercontent.com/avoss19/RoboGUI-Electron/master/hostOpenCM.py
-$ python host.py
+$ python hostOpenCM.py
 ```
 
 In RoboGUI-Electron
