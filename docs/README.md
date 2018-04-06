@@ -14,7 +14,7 @@ This project is a GUI for BSM robots that is created using electron
 
 ## How to run w/out building
 
-Start the GUI run this command; You may need to changed the ip addresses in the connections.js
+Start the GUI run this command:
 ```
 $ npm start
 ```
