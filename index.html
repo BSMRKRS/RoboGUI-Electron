@@ -2,6 +2,16 @@
 <html>
 
   <head>
+    <style>
+    .rotateimg180 {
+      -webkit-transform:rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+    </style>
+
     <meta charset="UTF-8">
     <title>RoboGUI-Electron</title>
   </head>
@@ -19,18 +29,14 @@
 
     <h1>RoboGUI-Electron</h1>
 
-    <input type="submit" value="Run Controller-Support"
-    onclick="Controller();"/>
+    <!-- Buttons -->
+    <input type="submit" value="Run Controller-Support" onclick="Controller();"/>
+    <input type="submit" value="Install Controller" onclick="ControllerInstall();"/>
+    <input type="submit" value="Flip Cameras" onclick="cameraRotate();"/>
 
-    <input type="submit" value="Install Controller"
-    onclick="ControllerInstall();"/>
-
-    <form id='RoboHTML' method="get">
+    <form id="RoboHTML" method="get">
       <input type="submit" value="Robo-HTML" />
     </form>
-
-    <!--<p><img src='http://webcams.hotelcozumel.com.mx:6003/axis-cgi/mjpg/video.cgi?resolution=320x240&dummy=1458771208837'></img></p>-->
-    <!--<p><img src='http://192.168.21.113:8080?action=stream'></img></p>-->
 
     <!-- Set of 18 cameras -->
     <p><img id='stream0'><img id='stream1'><img id='stream2'></p>
@@ -42,13 +48,15 @@
     <p><img id='stream15'><img id='stream16'><img id='stream17'></p>
 
     <h3>Version</h3>
-    RoboGUI v1.0.1 <br />
+    RoboGUI v1.1.0 <br />
     Node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
   </body>
 
   <script>
+    var cameraPos = 0;
+
     function start(){
       camera();
       document.getElementById('RoboHTML').action=roboHTML;
@@ -66,9 +74,18 @@
     function camera(){
       for (var i in cameras){
         document.getElementById('stream'+i.toString()).src="http://"+cameras[i]+":8080?action=stream&resolution=320x240";
-        document.getElementById('stream'+i.toString()).height="240"
-        document.getElementById('stream'+i.toString()).width="320"
+        document.getElementById('stream'+i.toString()).height="240";
+        document.getElementById('stream'+i.toString()).width="320";
         console.log(i + ': ' + cameras[i]);
+      };
+    };
+
+    function cameraRotate(){
+      cameraPos = cameraPos + 1;
+      cameraPos = cameraPos % 2
+      for (var i in cameras){
+        if (cameraPos == 0){document.getElementById('stream'+i.toString()).className=""}
+        if (cameraPos == 1){document.getElementById('stream'+i.toString()).className="rotateimg180"}
       }
     }
 
