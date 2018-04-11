@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<body text='white'>
+<body onload='oldIP();' text='white'>
 
   <h1>Config IP Addresses</h1>
 
@@ -17,33 +17,47 @@
   <input type="submit" value="Cancel"
   onclick="window.close();"/>
 
-  <script>
-  const electron = require('electron');
-  const path = require('path');
-  const appPath = (electron.app || electron.remote.app).getPath('userData');
+</body>
+<script type="text/javascript" src="ip.js"></script>
+<script>
+function oldIP(){
+  camera = "'" + cameras[0] + "'"
 
-  function ipSave(){
-    var camera = document.getElementById('cameraIP').value
-    var controller = document.getElementById('controllerIP').value
-    var roboHTML = document.getElementById('roboHTMLIP').value
+  for (var i in cameras){
+    if (i != 0){
+      var camera = camera + ",'" + cameras[i] + "'"
+    };
+  };
 
-    if (camera == '') {camera = "''"}
-    if (controller == '') {controller = "''"}
-    if (roboHTML == '') {roboHTML = ''}
+  roboHTML = roboHTML.split("http://")
 
-    var fs = require('fs');
+  console.log(roboHTML)
 
-    fs.writeFile(appPath+"/ip.js", "cameras = ["+camera+"]\ncontroller = '"+controller+"'\nroboHTML = 'http://"+roboHTML+"'", function(err) {
-    if(err) {
-        return console.log(err);
-    }
-    console.log("The file was saved!");
+  document.getElementById('cameraIP').value = camera;
+  document.getElementById('controllerIP').value = controller;
+  document.getElementById('roboHTMLIP').value = roboHTML[1];
+};
+
+function ipSave(){
+  camera = document.getElementById('cameraIP').value
+  controller = document.getElementById('controllerIP').value
+  roboHTML = document.getElementById('roboHTMLIP').value
+
+  if (camera == '') {camera = "''"}
+  if (controller == '') {controller = "''"}
+  if (roboHTML == '') {roboHTML = ''}
+
+  var fs = require('fs');
+
+  fs.writeFile(__dirname+"/ip.js", "cameras = ["+camera+"]\ncontroller = '"+controller+"'\nroboHTML = 'http://"+roboHTML+"'", function(err) {
+  if(err) {
+      return console.log(err);
+  }
+  console.log("Saved to "+__dirname+"/ip.js");
   });
 
-  window.close()
-  }
-  </script>
-
-</body>
+window.close()
+};
+</script>
 
 <html>

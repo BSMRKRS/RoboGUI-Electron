@@ -17,21 +17,11 @@
   </head>
 
   <body onload='start();' text = 'white'>
-    <script>
-    const electron = require('electron');
-    const path = require('path');
-    const appPath = (electron.app || electron.remote.app).getPath('userData');
-    const ip = appPath+"/ip.js";
-    </script>
-
-    <script type="text/javascript" id='ip'></script>
-    <script>document.getElementById('ip').src=ip</script>
 
     <h1>RoboGUI-Electron</h1>
 
     <!-- Buttons -->
     <input type="submit" value="Run Controller-Support" onclick="Controller();"/>
-    <input type="submit" value="Install Controller" onclick="ControllerInstall();"/>
     <input type="submit" value="Flip Cameras" onclick="cameraRotate();"/>
 
     <form id="RoboHTML" method="get">
@@ -48,12 +38,13 @@
     <p><img id='stream15'><img id='stream16'><img id='stream17'></p>
 
     <h3>Version</h3>
-    RoboGUI v1.1.0 <br />
+    RoboGUI v<script>document.write(require('electron').remote.app.getVersion())</script> <br />
     Node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
   </body>
 
+  <script type="text/javascript" src="ip.js"></script>
   <script>
     var cameraPos = 0;
 
@@ -63,7 +54,7 @@
     }
 
     function Controller(){
-      require('child_process').exec("python ~/Library/'Application Support'/robogui-electron/Controller.py " + controller, function (err, stdout, stderr) {
+      require('child_process').exec("python "+ __dirname + "/Controller.py " + controller, function (err, stdout, stderr) {
         if (err) {
           return console.log(err);
         }
@@ -87,15 +78,6 @@
         if (cameraPos == 0){document.getElementById('stream'+i.toString()).className=""}
         if (cameraPos == 1){document.getElementById('stream'+i.toString()).className="rotateimg180"}
       }
-    }
-
-    function ControllerInstall(){
-      require('child_process').exec("curl -o ~/Library/'Application Support'/robogui-electron/Controller.py https://raw.githubusercontent.com/avoss19/RoboGUI-Electron/master/Controller.py", function (err, stdout, stderr) {
-        if (err) {
-          return console.log(err);
-        }
-        console.log(stdout);
-      });
     }
 
   </script>

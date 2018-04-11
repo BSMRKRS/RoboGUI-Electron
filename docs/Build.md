@@ -1,4 +1,6 @@
 # Build for release
+- Remember to change version number in package.json
+
 Install Dependencies:
 ```
 $ brew install npm
