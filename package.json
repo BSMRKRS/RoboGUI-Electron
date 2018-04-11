@@ -4,7 +4,9 @@
   "description": "Application for BSM Robots",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=bsm.icns --prune=true --out=release-builds",
+    "package:mac": "electron-installer-dmg release-builds/RoboGUI-Electron-darwin-x64/RoboGUI-Electron.app RoboGUI-Electron --out=release-builds --overwrite --icon=bsm.icns"
   },
   "repository": {
     "type": "git",
