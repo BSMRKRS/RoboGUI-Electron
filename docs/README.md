@@ -35,7 +35,6 @@ $ python hostOpenCM.py
 ```
 
 In RoboGUI-Electron
-- Click "Install Controller" (only need to do once; installs to Application Support)
 - Define IP (click Nav in status bar)
 - Click "Run Controller-Support"
 
