@@ -1,6 +1,6 @@
 # RoboGUI-Electron
 
-This project is a GUI for BSM robots that is created using electron
+This project is a GUI for BSM robots that is created using [Electron](https://electronjs.org)
 
 ![alt text](https://raw.githubusercontent.com/avoss19/RoboGUI-Electron/master/docs/window.png)
 
@@ -41,7 +41,8 @@ In RoboGUI-Electron
 
 ## Dependencies
 
-- npm
+- npm & pygame
 ```
 $ brew install npm
+$ pip install pygame # Only needed for Controller-Support
 ```
