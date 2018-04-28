@@ -1,6 +1,6 @@
 # RoboGUI-Electron
 
-This project is a GUI for BSM robots that is created using electron
+This project is a GUI for BSM robots that is created using [Electron](https://electronjs.org)
 
 ![alt text](https://raw.githubusercontent.com/avoss19/RoboGUI-Electron/master/docs/window.png)
 
@@ -35,13 +35,19 @@ $ python hostOpenCM.py
 ```
 
 In RoboGUI-Electron
-- Click "Install Controller" (only need to do once; installs to Application Support)
 - Define IP (click Nav in status bar)
 - Click "Run Controller-Support"
 
 ## Dependencies
 
-- npm
+- npm & pygame
 ```
 $ brew install npm
+$ pip install pygame # Only needed for Controller-Support
 ```
+
+
+## Features
+
+- Click lidar image to enlarge
+- Compatible w/ post_to_web from robo-html

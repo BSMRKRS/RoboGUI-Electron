@@ -1,8 +1,14 @@
 # Change Log:
+v1.3.0
+- Added support for LIDAR Image
+- Added default button for ip addresses
+- Fixed security issue w/ package
+- Able to view sensor data w/ post_to_web from robo-html
+
 v1.2.0
 - Removed Controller install, no longer needed
 - Changed location of ip.js to RoboGUI-Electron.app from Application Support
-- define ip page will remember last put in ip addresses
+- Define ip page will remember last put in ip addresses
 
 v1.1.0
 - Added "Flip Cameras" button

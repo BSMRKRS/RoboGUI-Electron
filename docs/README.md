@@ -45,3 +45,9 @@ In RoboGUI-Electron
 $ brew install npm
 $ pip install pygame # Only needed for Controller-Support
 ```
+
+
+## Features
+
+- Click lidar image to enlarge
+- Compatible w/ post_to_web from robo-html

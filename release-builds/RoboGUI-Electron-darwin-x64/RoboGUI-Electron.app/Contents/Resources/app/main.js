@@ -11,7 +11,7 @@ const {app, BrowserWindow, Menu} = require('electron')
   function createWindow() {
     // Create the browser window.
     win = mainWindow = new BrowserWindow({
-      titleBarStyle: 'hidden',
+      //titleBarStyle: 'hidden',
       width: 1200,
       height: 800,
       minWidth: 800,
@@ -25,9 +25,6 @@ const {app, BrowserWindow, Menu} = require('electron')
       protocol: 'file:',
       slashes: true
     }))
-
-    // Open the DevTools.
-    //win.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -50,9 +47,9 @@ const {app, BrowserWindow, Menu} = require('electron')
           label: 'Config IP Addresses',
           click(){
             const ipWin = new BrowserWindow({
-              titleBarStyle: 'hidden',
+              //titleBarStyle: 'hidden',
               width: 400,
-              height: 280,
+              height: 360,
               backgroundColor: '#1d2127'
             })
             ipWin.loadURL(`file://${__dirname}/ip.html`)
