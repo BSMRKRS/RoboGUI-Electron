@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body onload='start();' text='white'>
+
+  <h1>Config IP Addresses</h1>
+
+  <p>* Cameras/Data ips requires quotes & refresh is needed after pressing "Okay"</p>
+
+  <p>Cameras: <input type="text" id='cameraIP'></p>
+  <p>Data: <input type="text" id='dataIP'></p>
+  <p>Controller: <input type="text" id='controllerIP'></p>
+  <p>RoboHTML: <input type="text" id='roboHTMLIP'></p>
+  <p>LIDAR: <input type="text" id='lidarIP'></p>
+
+  <input type="submit" value="Okay"
+  onclick="ipSave();"/>
+
+  <input type="submit" value="Cancel"
+  onclick="window.close();"/>
+
+  <input type="submit" value="Defualt" style="float: right;"
+  onclick="defualtIP();"/>
+
+</body>
+<script type="text/javascript" src="ip.js"></script>
+<script src='ip_config.js'></script>
+
+</html>

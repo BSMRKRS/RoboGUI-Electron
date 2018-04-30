@@ -1,4 +1,8 @@
 # Change Log:
+v1.3.1
+- Supports more than 18 cameras
+- Cleaned up code
+
 v1.3.0
 - Added support for LIDAR Image
 - Added default button for ip addresses

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <style>
     .rotateimg180 {
@@ -11,54 +10,40 @@
       transform: rotate(180deg);
     }
     </style>
-
     <meta charset="UTF-8">
     <title>RoboGUI-Electron</title>
   </head>
 
   <body onload='start();' text = 'white'>
-
     <h1>RoboGUI-Electron</h1>
 
     <!-- Buttons -->
     <input type="submit" value="Run Controller-Support" onclick="Controller();"/>
     <input type="submit" value="Flip Cameras" onclick="cameraRotate();"/>
 
-    <form id="RoboHTML" method="get">
-      <input type="submit" value="Robo-HTML" />
-    </form>
+    <!-- Cameras -->
+    <div>
+      <div id='camerasDiv'/>
+    </div>
 
-    <!-- Set of 18 cameras -->
-    <div style="height:0" id='cam0'><img id='stream0'><img id='stream1'><img id='stream2'></div>
-    <div style="height:0" id='cam1'><img id='stream3'><img id='stream4'><img id='stream5'></div>
-    <div style="height:0" id='cam2'><img id='stream6'><img id='stream7'><img id='stream8'></div>
-
-    <div style="height:0" id='cam3'><img id='stream9'><img id='stream10'><img id='stream11'></div>
-    <div style="height:0" id='cam4'><img id='stream12'><img id='stream13'><img id='stream14'></div>
-    <div style="height:0" id='cam5'><img id='stream15'><img id='stream16'><img id='stream17'></div>
-
+    <!-- RoboDiv -->
     <div style="height:0" id='roboDiv'>
+
+      <!-- Lidar Image -->
       <a href="lidarImg.html">
         <img id='lidarIMG'>
       </a>
+
+      <!-- Robo-HTML iframe -->
       <iframe style="width:0;height:0;border:0;border:none;" frameBorder="0" id='roboHTMLframe'></iframe>
+
+      <!-- Data/Post_to_web -->
       <div style='display:inline-block;vertical-align:top;' width='320' height='240'>
-        <p id='m0'></p>
-        <p id='m1'></p>
-        <p id='m2'></p>
-        <p id='m3'></p>
-        <p id='m4'></p>
-        <p id='m5'></p>
-        <p id='m6'></p>
-        <p id='m7'></p>
-        <p id='m8'></p>
-        <p id='m9'></p>
-        <p id='m10'></p>
-        <p id='m11'></p>
-        <p id='m12'></p>
+        <p id='data'></p>
       </div>
     </div>
 
+    <!-- Version Info -->
     <h3>Version</h3>
     RoboGUI v<script>document.write(require('electron').remote.app.getVersion())</script> <br />
     Node <script>document.write(process.versions.node)</script>,
@@ -67,113 +52,6 @@
   </body>
 
   <script type="text/javascript" src="ip.js"></script>
-  <script>
-    var cameraPos = 0;
-
-    function start(){
-      camera();
-      roboHTMLInit();
-      printData();
-      lidarInit();
-    };
-
-    function lidarInit(){
-      var lidarTemp = lidar.split('.');
-      if (lidarTemp[3] != 'xxx'){
-        document.getElementById('roboDiv').style='';
-        document.getElementById('lidarIMG').width='320';
-        document.getElementById('lidarIMG').height='240';
-      }
-    };
-
-    function printData(){
-      var $ = require('jquery')
-      var num = 0;
-
-      for (i in data){
-        var dataTemp = data[0].split('.')
-        if (dataTemp[3] != 'xxx'){
-          document.getElementById('roboDiv').style='';
-          $.getScript("http://"+data[i]+"/readings.js", function() {
-              msg = msg.split(',')
-              var newMsg = msg[0] + '<br />'
-              for (var i = 1; i < msg.length; i++){
-                newMsg = newMsg + msg[i] + '<br />'
-              };
-              document.getElementById('m'+num).innerHTML=newMsg;
-              num += 1;
-          });
-        };
-      };
-    };
-
-    function roboHTMLInit(){
-      var roboHTMLTemp = roboHTML.split('.');
-      if (roboHTMLTemp[3] != 'xxx'){
-        document.getElementById('RoboHTML').action=roboHTML;
-        document.getElementById('roboHTMLframe').src=roboHTML;
-        document.getElementById('roboHTMLframe').style='background: #FFFFFF;border:0;border:none;margin:0px 0px 0px -5px;padding:0px;';
-        document.getElementById('roboHTMLframe').width='320';
-        document.getElementById('roboHTMLframe').height='240';
-        document.getElementById('roboDiv').style='';
-      }
-    };
-
-    function Controller(){
-      require('child_process').exec("python "+ __dirname + "/Controller.py " + controller, function (err, stdout, stderr) {
-        if (err) {
-          return console.log(err);
-        }
-        console.log(stdout);
-      });
-    };
-
-    function loop(){
-      printData();
-      lidarUpdate();
-      setTimeout('loop()',5000)
-    };
-
-    function lidarUpdate(){
-      // updates lidar element
-      var lidarTemp = lidar.split('.');
-      if (lidarTemp[3] != 'xxx'){
-        console.log("lidar: " + lidar);
-        var d = new Date();
-        document.getElementById('lidarIMG').src="http://"+lidar+":8000/lidar.png?rand=" + d.getTime();
-        //document.getElementById('lidarIMG').src="https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg";
-      }
-    };
-
-    function camera(){
-      for (var i in cameras){
-        var cameraTemp = cameras[0].split('.')
-        if (cameraTemp[3] != 'xxx'){
-          document.getElementById('stream'+i.toString()).src="http://"+cameras[i]+":8080?action=stream&resolution=320x240";
-          //document.getElementById('stream'+i.toString()).src=cameras[i]
-          document.getElementById('stream'+i.toString()).width="320";
-          document.getElementById('stream'+i.toString()).height="240";
-          console.log(i + ': ' + cameras[i]);
-          if (i == 0){document.getElementById('cam0').style=''}
-          if (i == 3){document.getElementById('cam1').style=''}
-          if (i == 6){document.getElementById('cam2').style=''}
-          if (i == 9){document.getElementById('cam3').style=''}
-          if (i == 12){document.getElementById('cam4').style=''}
-          if (i == 15){document.getElementById('cam5').style=''}
-        }
-      };
-    };
-
-    function cameraRotate(){
-      cameraPos = cameraPos + 1;
-      cameraPos = cameraPos % 2;
-      for (var i in cameras){
-        if (cameraPos == 0){document.getElementById('stream'+i.toString()).className=""}
-        if (cameraPos == 1){document.getElementById('stream'+i.toString()).className="rotateimg180"}
-      };
-    };
-
-    loop();
-  </script>
+  <script src='index.js'></script>
 
 </html>

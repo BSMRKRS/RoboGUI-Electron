@@ -17,16 +17,12 @@ img{
     <input type="submit" value="Back" name="Submit"/>
 </form>
 
-<div><img id='lidarIMG'></div>
+<div>
+  <img id='lidarIMG'>
+</div>
+
 </body>
 
 <script type="text/javascript" src="ip.js"></script>
-<script>
-function lidarUpdate(){
-  // updates lidar element
-  console.log("lidarUpdate");
-  document.getElementById('lidarIMG').src="http://"+lidar+":8000/lidar.png?rand=" + Math.random();
-  setTimeout('lidarUpdate()', 5000);
-};
-</script>
+<script src='lidarImg.js'></script>
 </html>

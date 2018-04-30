@@ -52,7 +52,7 @@ const {app, BrowserWindow, Menu} = require('electron')
               height: 360,
               backgroundColor: '#1d2127'
             })
-            ipWin.loadURL(`file://${__dirname}/ip.html`)
+            ipWin.loadURL(`file://${__dirname}/ip_config.html`)
           }
         }
       ]
@@ -140,6 +140,3 @@ const {app, BrowserWindow, Menu} = require('electron')
       createWindow()
     }
   })
-
-  // In this file you can include the rest of your app's specific main process
-  // code. You can also put them in separate files and require them here.
