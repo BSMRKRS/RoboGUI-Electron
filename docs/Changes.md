@@ -1,6 +1,12 @@
 # Change Log:
+v1.4.0
+- Support for wider variety of camera streams
+- Removed roboHTML support (does not include post_to_web/still can use post_to_web)
+- Improved documentation
+- Auto update after ip change
+
 v1.3.1
-- Supports more than 18 cameras
+- Supports more than 18 cameras (no max of streams)
 - Cleaned up code
 
 v1.3.0
