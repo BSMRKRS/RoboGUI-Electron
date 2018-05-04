@@ -1,9 +1,19 @@
+fs = require('fs')
 var cameraPos = 0;
+var ipjs = ''
+fs.readFile('ip.js', 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log(data);
+  ipjs = data;
+});
 
 loop(); // Runs loop after index.html is loaded
 
 // Loop that runs on clock
 function loop(){
+  check();
   printData();
   lidarUpdate();
   setTimeout('loop()',1000)
@@ -12,9 +22,22 @@ function loop(){
 // runs onload in index.html
 function start(){
   camera();
-  roboHTMLInit();
   printData();
   lidarInit();
+};
+
+// Checks is ip.js has been updated
+function check(){
+  fs.readFile('ip.js', 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(data);
+    if (data != ipjs){
+      ipjs = data;
+      location.reload();
+    };
+  });
 };
 
 // Init lidar image
@@ -48,22 +71,9 @@ function printData(){
   };
 };
 
-// Init robo-HTML iframe
-function roboHTMLInit(){
-  var roboHTMLTemp = roboHTML.split('.');
-  if (roboHTMLTemp[3] != 'xxx'){
-    document.getElementById('RoboHTML').action=roboHTML;
-    document.getElementById('roboHTMLframe').src=roboHTML;
-    document.getElementById('roboHTMLframe').style='background: #FFFFFF;border:0;border:none;margin:0px 0px 0px -5px;padding:0px;';
-    document.getElementById('roboHTMLframe').width='320';
-    document.getElementById('roboHTMLframe').height='240';
-    document.getElementById('roboDiv').style='';
-  }
-};
-
 // Execute controller python script
 function Controller(){
-  require('child_process').exec("python "+ __dirname + "/Controller.py " + controller, function (err, stdout, stderr) {
+  require('child_process').exec("python "+ __dirname + "/Python/Controller.py " + controller, function (err, stdout, stderr) {
     if (err) {
       return console.log(err);
     }
@@ -84,14 +94,20 @@ function lidarUpdate(){
 // Cameras
 function camera(){
   var html = ''
-  for (i in cameras){
-    var cameraTemp = cameras[0].split('.')
-    if (cameraTemp[3] != 'xxx'){
-      html = html + "<img src="+cameras[i]+":8080?action=stream id='stream"+i+"' width='320' height='240'>"
-      var temp = (i + 1) % 3;
-      if (temp == 0){html = html + '<br />';};
-      document.getElementById('camerasDiv').innerHTML = html;
+  var cameraTemp = cameras[0].split('.')
+  if (cameraTemp[3] != 'xxx:8080'){
+    if (mjpg){
+      for (i in cameras){
+        html = html + "<img src=http://"+cameras[i]+"?action=stream id='stream"+i+"' width='320' height='240'>"
+      };
+    } else {
+      for (i in cameras){
+        html = html + "<img src="+cameras[i]+" id='stream"+i+"' width='320' height='240'>"
+      };
     };
+    var temp = (i + 1) % 3;
+    if (temp == 0){html = html + '<br />';};
+    document.getElementById('camerasDiv').innerHTML = html;
   };
 };
 

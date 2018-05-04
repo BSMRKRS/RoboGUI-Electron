@@ -5,20 +5,28 @@
 
   <h1>Config IP Addresses</h1>
 
-  <p>* Cameras/Data ips requires quotes & refresh is needed after pressing "Okay"</p>
+  <!-- Open Config IP readme in web browser -->
+  <h4>
+    <a href='' onclick="browser('https://github.com/BSMRKRS/RoboGUI-Electron/blob/master/docs/ip_config.md');"
+    style="color: #0000ff">Info about defining IP adresses</a>
+  </h4>
 
-  <p>Cameras: <input type="text" id='cameraIP'></p>
+  <!-- User input boxes for ip addresses -->
+  <p>Cameras: <input type="text" id='cameraIP'>
+    <input id="mjpg-checkBox" type="checkbox" checked>mjpg-streamer</p>
   <p>Data: <input type="text" id='dataIP'></p>
   <p>Controller: <input type="text" id='controllerIP'></p>
-  <p>RoboHTML: <input type="text" id='roboHTMLIP'></p>
   <p>LIDAR: <input type="text" id='lidarIP'></p>
 
+  <!-- Okay button -->
   <input type="submit" value="Okay"
   onclick="ipSave();"/>
 
+  <!-- Cancel button -->
   <input type="submit" value="Cancel"
   onclick="window.close();"/>
 
+  <!-- Defualt button -->
   <input type="submit" value="Defualt" style="float: right;"
   onclick="defualtIP();"/>
 

@@ -49,7 +49,7 @@ const {app, BrowserWindow, Menu} = require('electron')
             const ipWin = new BrowserWindow({
               //titleBarStyle: 'hidden',
               width: 400,
-              height: 360,
+              height: 330,
               backgroundColor: '#1d2127'
             })
             ipWin.loadURL(`file://${__dirname}/ip_config.html`)

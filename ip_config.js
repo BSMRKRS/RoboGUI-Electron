@@ -2,6 +2,7 @@ function start(){
   oldIP();
 };
 
+// Reads old ip addresses from ip.js and prints to text boxes
 function oldIP(){
   camera = "'" + cameras[0] + "'"
   for (var i in cameras){
@@ -17,21 +18,20 @@ function oldIP(){
     };
   };
 
-  roboHTML = roboHTML.split("http://")
-
-  console.log(roboHTML)
-
+  // print to text boxes
   document.getElementById('cameraIP').value = camera;
+  document.getElementById('mjpg-checkBox').checked = mjpg;
   document.getElementById('dataIP').value = datas;
   document.getElementById('controllerIP').value = controller;
-  document.getElementById('roboHTMLIP').value = roboHTML[1];
   document.getElementById('lidarIP').value = lidar;
 };
 
+
+// Sets default ip addresses
 function defualtIP(){
   var fs = require('fs');
 
-  fs.writeFile(__dirname+"/ip.js", "cameras = ['192.168.21.xxx']\ndata = ['192.168.21.xxx']\ncontroller = '192.168.21.xxx'\nroboHTML = 'http://192.168.21.xxx'\n" + "lidar = '192.168.21.xxx'", function(err) {
+  fs.writeFile(__dirname+"/ip.js", "cameras = ['192.168.21.xxx:8080']\nmjpg = true\ndata = ['192.168.21.xxx']\ncontroller = '192.168.21.xxx'\n" + "lidar = '192.168.21.xxx'", function(err) {
   if(err) {
       return console.log(err);
   }
@@ -41,27 +41,34 @@ function defualtIP(){
 window.close()
 };
 
+
+// Save ip addresses to ip.js
 function ipSave(){
   camera = document.getElementById('cameraIP').value;
+  mjpg = document.getElementById('mjpg-checkBox').checked;
   data = document.getElementById('dataIP').value;
   controller = document.getElementById('controllerIP').value;
-  roboHTML = document.getElementById('roboHTMLIP').value;
   lidar = document.getElementById('lidarIP').value;
 
   if (camera == '') {camera = "''"};
   if (data == '') {data = "''"};
   if (controller == '') {controller = "''"};
-  if (roboHTML == '') {roboHTML = ''};
   if (lidar == '') {lidar = ''};
 
   var fs = require('fs');
 
-  fs.writeFile(__dirname+"/ip.js", "cameras = ["+camera+"]\ndata = ["+data+"]\ncontroller = '"+controller+"'\nroboHTML = 'http://"+roboHTML+"'\n" + "lidar = '" + lidar + "'", function(err) {
+  fs.writeFile(__dirname+"/ip.js", "cameras = ["+camera+"]\nmjpg = "+mjpg+"\ndata = ["+data+"]\ncontroller = '"+controller+"'\n" + "lidar = '" + lidar + "'", function(err) {
   if(err) {
       return console.log(err);
   }
   console.log("Saved to "+__dirname+"/ip.js");
   });
-  
+
 window.close();
+};
+
+// Open webpage in user's defualt browser
+function browser(url){
+  const {shell} = require('electron');
+  shell.openExternal(url);
 };

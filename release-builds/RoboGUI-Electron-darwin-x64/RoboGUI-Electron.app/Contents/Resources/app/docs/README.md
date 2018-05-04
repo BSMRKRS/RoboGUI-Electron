@@ -19,14 +19,21 @@ Start the GUI run this command:
 $ npm start
 ```
 
+## Define IP Addresses
+
+[IP Config Readme](/docs/ip_config.md/)
+
+## Cameras
+
+- Supports any camera stream that can be viewed from a web browser
+
 ## Post_to_web:
 
 - Use post_to_web.py to send data to GUI from your robot
   - For reference to post_to_web refer to [robo-html](https://github.com/BSMRKRS/robo-html)
-- Define "Data" IPs (click "Nav" > "Config IP Addresses" in status bar)
 - Download post_to_web.py to robot or laptop
   - Post_to_web.py is located in the "Python" sub folder
-  - Note the version of post_to_web in this repo differs from the version in robo-html on line 18. Both versions work, but variables will be displayed as `variable=value` w/ robo-html instead of `variable: value` w/ the version in this repo.
+  - Note: The version of post_to_web in this repo differs from the version in robo-html on line 18. Both versions work, but variables will be displayed as `variable=value` w/ robo-html instead of `variable: value` w/ the version in this repo.
 
 ```
 $ curl -O https://raw.githubusercontent.com/BSMRKRS/RoboGUI-Electron/master/Python/post_to_web.py
