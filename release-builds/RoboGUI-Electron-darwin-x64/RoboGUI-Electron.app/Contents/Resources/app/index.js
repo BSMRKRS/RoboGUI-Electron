@@ -1,7 +1,7 @@
 fs = require('fs')
 var cameraPos = 0;
 var ipjs = ''
-fs.readFile('ip.js', 'utf8', function (err,data) {
+fs.readFile(__dirname+"/ip.js", 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
@@ -28,7 +28,7 @@ function start(){
 
 // Checks is ip.js has been updated
 function check(){
-  fs.readFile('ip.js', 'utf8', function (err,data) {
+  fs.readFile(__dirname+"/ip.js", 'utf8', function (err,data) {
     if (err) {
       return console.log(err);
     }

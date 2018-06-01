@@ -1,6 +1,6 @@
 {
   "name": "RoboGUI-Electron",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Application for BSM Robots",
   "main": "main.js",
   "scripts": {
@@ -26,14 +26,15 @@
   "devDependencies": {
     "electron": "^1.8.4",
     "electron-installer-dmg": "^0.2.1",
-    "electron-packager": "^11.2.0",
+    "electron-packager": "^12.1.0",
     "electron-rebuild": "^1.7.3"
   },
   "dependencies": {
     "download-file": "^0.1.5",
     "hoek": "^5.0.3",
     "jquery": "^3.3.1",
-    "npm": "^5.8.0",
+    "lodash": "^4.17.5",
+    "npm": "^6.1.0",
     "shelljs": "^0.8.1"
   }
 }

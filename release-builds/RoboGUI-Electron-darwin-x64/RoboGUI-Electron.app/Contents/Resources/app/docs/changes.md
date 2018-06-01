@@ -1,4 +1,7 @@
 # Change Log:
+v1.4.1
+- Fixed bug w/ ip.js file
+
 v1.4.0
 - Support for wider variety of camera streams
 - Removed roboHTML support (does not include post_to_web/still can use post_to_web)
