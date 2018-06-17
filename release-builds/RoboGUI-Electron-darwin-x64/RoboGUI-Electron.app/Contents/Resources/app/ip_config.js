@@ -18,12 +18,20 @@ function oldIP(){
     };
   };
 
+  controllers = "'" + controller[0] + "'"
+  for (var i in controller){
+    if (i != 0){
+      var controllers = controllers + ",'" + controller[i] + "'"
+    };
+  };
+
   // print to text boxes
   document.getElementById('cameraIP').value = camera;
   document.getElementById('mjpg-checkBox').checked = mjpg;
   document.getElementById('dataIP').value = datas;
-  document.getElementById('controllerIP').value = controller;
+  document.getElementById('controllerIP').value = controllers;
   document.getElementById('lidarIP').value = lidar;
+  document.getElementById('ControllerSelect').value = controllerV;
 };
 
 
@@ -31,7 +39,7 @@ function oldIP(){
 function defualtIP(){
   var fs = require('fs');
 
-  fs.writeFile(__dirname+"/ip.js", "cameras = ['192.168.21.xxx:8080']\nmjpg = true\ndata = ['192.168.21.xxx']\ncontroller = '192.168.21.xxx'\n" + "lidar = '192.168.21.xxx'", function(err) {
+  fs.writeFile(__dirname+"/ip.js", "cameras = ['192.168.21.xxx:8080']\nmjpg = true\ndata = ['192.168.21.xxx']\ncontroller = ['192.168.21.xxx']\n" + "controllerV = 'Master'\n" + "lidar = '192.168.21.xxx'", function(err) {
   if(err) {
       return console.log(err);
   }
@@ -49,6 +57,7 @@ function ipSave(){
   data = document.getElementById('dataIP').value;
   controller = document.getElementById('controllerIP').value;
   lidar = document.getElementById('lidarIP').value;
+  controllerSelection = document.getElementById("ControllerSelect").value
 
   if (camera == '') {camera = "''"};
   if (data == '') {data = "''"};
@@ -57,7 +66,7 @@ function ipSave(){
 
   var fs = require('fs');
 
-  fs.writeFile(__dirname+"/ip.js", "cameras = ["+camera+"]\nmjpg = "+mjpg+"\ndata = ["+data+"]\ncontroller = '"+controller+"'\n" + "lidar = '" + lidar + "'", function(err) {
+  fs.writeFile(__dirname+"/ip.js", "cameras = ["+camera+"]\nmjpg = "+mjpg+"\ndata = ["+data+"]\ncontroller = ["+controller+"]\n" + "controllerV = '" + controllerSelection + "'\n" + "lidar = '" + lidar + "'", function(err) {
   if(err) {
       return console.log(err);
   }

@@ -48,7 +48,7 @@ const {app, BrowserWindow, Menu} = require('electron')
           click(){
             const ipWin = new BrowserWindow({
               //titleBarStyle: 'hidden',
-              width: 400,
+              width: 420,
               height: 330,
               backgroundColor: '#1d2127'
             })

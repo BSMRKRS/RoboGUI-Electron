@@ -1,4 +1,7 @@
 # Change Log:
+v1.5.0
+- Ability to change version of controller script
+
 v1.4.1
 - Fixed bug w/ ip.js file
 

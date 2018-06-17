@@ -73,7 +73,11 @@ function printData(){
 
 // Execute controller python script
 function Controller(){
-  require('child_process').exec("python "+ __dirname + "/Python/Controller.py " + controller, function (err, stdout, stderr) {
+  var controllerIPs = ''
+  for (i in controller){
+    controllerIPs = controllerIPs + controller[i] + " ";
+  }
+  require('child_process').exec("python "+ __dirname + "/Python/controller" + controllerV + ".py " + controllerIPs, function (err, stdout, stderr) {
     if (err) {
       return console.log(err);
     }
