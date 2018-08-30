@@ -1,0 +1,17 @@
+# Py
+__pycache__
+*.pyc
+
+# Py Build
+dist
+build
+*.egg-info
+
+# Mac
+.DS_Store
+
+# Testing
+*test*
+
+# Logs
+*.log

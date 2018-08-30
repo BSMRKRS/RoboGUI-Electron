@@ -4,6 +4,25 @@ This project is a GUI for BSM robots that is created using [Electron](https://el
 
 ![alt text](https://raw.githubusercontent.com/BSMRKRS/RoboGUI-Electron/master/docs/window.png)
 
+## Run From Package
+
+Mac:
+- Install DMG file
+- Launch app from applications folder
+
+Linux:
+- Install deb file
+
+```bash
+sudo RoboGUI-Electron
+```
+
+## Install Electron
+
+```bash
+sudo -H npm install -g electron
+npm install
+```
 
 ## Download & Build:
 
@@ -78,15 +97,15 @@ In RoboGUI-Electron
 
 ## Dependencies
 
-- npm & pygame
-
-```
-$ brew install npm # Need to run GUI w/out building
-$ pip install pygame # Only needed for Controller-Support
-```
+- [bsmLib](https://github.com/BSMRKRS/bsmLib/)
+- wget
 
 
 ## Features
 
 - Click lidar image to enlarge
 - Compatible w/ post_to_web from robo-html
+
+## Troubleshooting
+
+[stack overflow](https://stackoverflow.com/questions/42308879/npm-err-code-elifecycle)

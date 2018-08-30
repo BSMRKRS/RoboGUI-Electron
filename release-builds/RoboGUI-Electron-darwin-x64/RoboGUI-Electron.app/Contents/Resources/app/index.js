@@ -1,12 +1,20 @@
-fs = require('fs')
+const fs = require('fs');
+const $ = require('jquery')
+const ip = __dirname + "/ip_config.json"
+
 var cameraPos = 0;
-var ipjs = ''
-fs.readFile(__dirname+"/ip.js", 'utf8', function (err,data) {
+
+var json = fs.readFileSync(ip);
+json = JSON.parse(json);
+
+var ipCheck;
+var new_ipCheck;
+fs.readFile(ip, 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
   console.log(data);
-  ipjs = data;
+  ipCheck = data;
 });
 
 loop(); // Runs loop after index.html is loaded
@@ -28,20 +36,21 @@ function start(){
 
 // Checks is ip.js has been updated
 function check(){
-  fs.readFile(__dirname+"/ip.js", 'utf8', function (err,data) {
+  fs.readFile(ip, 'utf8', function (err,data) {
     if (err) {
       return console.log(err);
     }
     console.log(data);
-    if (data != ipjs){
-      ipjs = data;
-      location.reload();
-    };
+    new_ipCheck = data;
   });
+  if(new_ipCheck != ipCheck){
+    location.reload()
+  }
 };
 
 // Init lidar image
 function lidarInit(){
+  lidar = json.lidar
   var lidarTemp = lidar.split('.');
   if (lidarTemp[3] != 'xxx'){
     document.getElementById('roboDiv').style='';
@@ -52,8 +61,8 @@ function lidarInit(){
 
 // Display data from post_to_web
 function printData(){
-  var $ = require('jquery')
   var msg_print = '';
+  var data = json.data
   for (i in data){
     var dataTemp = data[0].split('.')
     if (dataTemp[3] != 'xxx'){
@@ -71,13 +80,18 @@ function printData(){
   };
 };
 
+// Update Controller Script
+function updateController(){
+  console.log("Update controller");
+  var dir = __dirname + "/Python/controller.py";
+  require('child_process').exec("wget -q https://raw.githubusercontent.com/BSMRKRS/Controller-Support/master/controller.py -O " + dir);
+}
+
 // Execute controller python script
 function Controller(){
-  var controllerIPs = ''
-  for (i in controller){
-    controllerIPs = controllerIPs + controller[i] + " ";
-  }
-  require('child_process').exec("python "+ __dirname + "/Python/controller" + controllerV + ".py " + controllerIPs, function (err, stdout, stderr) {
+  console.log("Run controller script");
+  var dir = __dirname + "/Python/controller.py";
+  require('child_process').exec("python " + dir + " " + json.controller, function (err, stdout, stderr) {
     if (err) {
       return console.log(err);
     }
@@ -87,6 +101,7 @@ function Controller(){
 
 // Update lidar image
 function lidarUpdate(){
+  var lidar = json.lidar
   var lidarTemp = lidar.split('.');
   if (lidarTemp[3] != 'xxx'){
     console.log("lidar: " + lidar);
@@ -98,10 +113,11 @@ function lidarUpdate(){
 // Cameras
 function camera(){
   var html = ''
+  var cameras = json.cameras
   var cameraTemp = cameras[0].split('.')
   if (cameraTemp[3] != 'xxx:8080'){
-    if (mjpg){
-      for (i in cameras){
+    if (json.mjpg){
+      for (i in json.cameras){
         html = html + "<img src=http://"+cameras[i]+"?action=stream id='stream"+i+"' width='320' height='240'>"
       };
     } else {
@@ -115,8 +131,9 @@ function camera(){
   };
 };
 
-// Rotate Camera 180 degrees
-function cameraRotate(){
+// Rotate camera 180 degrees
+function cameraFlip(){
+  cameras = json.cameras
   cameraPos = cameraPos + 1;
   cameraPos = cameraPos % 2;
   for (var i in cameras){

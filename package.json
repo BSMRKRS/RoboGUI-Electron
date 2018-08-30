@@ -6,7 +6,9 @@
   "scripts": {
     "start": "electron .",
     "build:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=bsm.icns --prune=true --out=release-builds",
-    "package:mac": "electron-installer-dmg release-builds/RoboGUI-Electron-darwin-x64/RoboGUI-Electron.app RoboGUI-Electron --out=release-builds --overwrite --icon=bsm.icns"
+    "package:mac": "electron-installer-dmg release-builds/RoboGUI-Electron-darwin-x64/RoboGUI-Electron.app RoboGUI-Electron --out=release-builds --overwrite --icon=bsm.icns",
+    "build:linux": "",
+    "package:linux": ""
   },
   "repository": {
     "type": "git",
@@ -34,7 +36,8 @@
     "hoek": "^5.0.3",
     "jquery": "^3.3.1",
     "lodash": "^4.17.5",
-    "npm": "^6.1.0",
+    "npm": "^6.2.0",
+    "open-in-editor": "^2.2.0",
     "shelljs": "^0.8.1"
   }
 }

@@ -15,12 +15,7 @@
   <p>Cameras: <input type="text" id='cameraIP'>
     <input id="mjpg-checkBox" type="checkbox" checked>mjpg-streamer</p>
   <p>Data: <input type="text" id='dataIP'></p>
-  <p>Controller: <input type="text" id='controllerIP'>
-    <select id='ControllerSelect'>
-      <option value="Master">Master</option>
-      <option value="Ax">Ax-12</option>
-      <option value="Arm">Arm</option>
-    </select></p>
+  <p>Controller: <input type="text" id='controllerIP'></p>
   <p>LIDAR: <input type="text" id='lidarIP'></p>
 
   <!-- Okay button -->
@@ -35,8 +30,11 @@
   <input type="submit" value="Defualt" style="float: right;"
   onclick="defualtIP();"/>
 
+  <!-- Edit JSON File -->
+  <input type="submit" value="Edit JSON In Atom" style="float: right;"
+  onclick="editJSON();"/>
+
 </body>
-<script type="text/javascript" src="ip.js"></script>
 <script src='ip_config.js'></script>
 
 </html>

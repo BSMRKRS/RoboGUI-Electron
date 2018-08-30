@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<style>
+  html,body{
+    margin:0;
+    height:100%;
+}
+img{
+  display:block;
+  width:100%; height:100%;
+  object-fit: cover;
+}
+</style>
+<body onload='lidarUpdate();'>
+
+<form action="index.html" method="get">
+    <input type="submit" value="Back" name="Submit"/>
+</form>
+
+<div>
+  <img id='lidarIMG'>
+</div>
+
+</body>
+
+<script type="text/javascript" src="ip.js"></script>
+<script src='lidarImg.js'></script>
+</html>

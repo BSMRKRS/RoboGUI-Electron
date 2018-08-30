@@ -17,6 +17,7 @@ const {app, BrowserWindow, Menu} = require('electron')
       minWidth: 800,
       minHeight: 600,
       backgroundColor: '#23272e',
+      icon: path.join(__dirname, 'icons/bsm.png')
  })
 
     // and load the index.html of the app.

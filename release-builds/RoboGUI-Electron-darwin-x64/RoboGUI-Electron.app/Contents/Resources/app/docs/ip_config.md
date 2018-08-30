@@ -14,28 +14,27 @@ How to config camera ip addresses
 - BSM Robots are set to port 8080 by default
   - Example: http://192.168.21.xxx:8080?action=stream
 - When defining camera ips in RoboGUI-Electron only type the camera ip and port number
-  - put each set of ip addresses in single quotes w/ the port number and separate
-    each device w/ comma
-  - Example: '192.168.21.113:8080','192.168.21.167:8000'
+  - Separate each device w/ comma
+  - Example: 192.168.21.113:8080, 192.168.21.167:8000
 
 #### Cameras w/out mjpg-streamer
 
 - Uncheck the "mjpg-streamer" checkbox
 - Supports any camera stream that can be viewed from a web browser
-- Define ip camera ips in single quotes w/ the full url to the stream and a comma separating each device
-  - Example: 'http://<span></span>192.168.21.113:8080?action=stream','http://<span></span>192.168.21.167:8080?action=stream'
+- Define ip camera ips w/ the full url to the stream and a comma separating each device
+  - Example: http://<span></span>192.168.21.113:8080?action=stream, http://<span></span>192.168.21.167:8080?action=stream
 
 ## Data
 
-- Use [post_to_web.py](https://github.com/BSMRKRS/RoboGUI-Electron/blob/master/Python/post_to_web.py) to read from robot
-- Define data ip addresses in single quotes w/ comma to separate devices
-- Example: '192.168.21.113', '192.168.21.167'
+- Use [post_to_web.py](https://github.com/BSMRKRS/bsmLib/blob/master/docs/post_to_web.md) to read from robot
+- Use comma to separate ip addresses
+- Example: 192.168.21.113, 192.168.21.167
 
 ## Controller
 
 - Only able to define one ip
-- Does not exicute [Controller-Support](https://github.com/BSMRKRS/RoboGUI-Electron/blob/master/Python/Controller.py) right away, the "Run Controller-Support" button will need to be press to run the script
-- Requires [pygame](https://www.pygame.org/) on host
+- Does not execute [Controller-Support](https://github.com/BSMRKRS/RoboGUI-Electron/blob/master/Python/controller.py) right away, the "Run Controller-Support" button will need to be press to run the script
+- Requires [bsmLib](https://github.com/BSMRKRS/bsmLib)
 
 ## LIDAR
 

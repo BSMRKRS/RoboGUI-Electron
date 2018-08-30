@@ -1,0 +1,43 @@
+{
+  "name": "RoboGUI-Electron",
+  "version": "1.6.0",
+  "description": "Application for BSM Robots",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/bsm.icns --prune=true --out=release-builds",
+    "package:mac": "electron-installer-dmg release-builds/RoboGUI-Electron-darwin-x64/RoboGUI-Electron.app RoboGUI-Electron --out=release-builds --overwrite --icon=icons/bsm.icns",
+    "build:linux": "electron-packager . RoboGUI-Electron --overwrite --platform=linux --arch=x64 --icon=icons/bsm.png --prune=true --out=release-builds",
+    "package:linux": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avoss19/RoboGUI-Electron.git"
+  },
+  "keywords": [
+    "git",
+    "BSM",
+    "Robo",
+    "Robot",
+    "GUI",
+    "Red",
+    "Knights"
+  ],
+  "author": "Andrew Voss",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.8.4",
+    "electron-installer-dmg": "^0.2.1",
+    "electron-packager": "^12.1.0",
+    "electron-rebuild": "^1.7.3"
+  },
+  "dependencies": {
+    "download-file": "^0.1.5",
+    "hoek": "^5.0.3",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.5",
+    "npm": "^6.1.0",
+    "open-in-editor": "^2.2.0",
+    "shelljs": "^0.8.1"
+  }
+}

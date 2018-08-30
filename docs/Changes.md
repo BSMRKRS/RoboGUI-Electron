@@ -1,4 +1,8 @@
 # Change Log:
+v1.6.0
+- Easier to config ip addresses (switched to json file)
+- Fixed bug while assigning ip addresses
+
 v1.5.0
 - Ability to change version of controller script
 
