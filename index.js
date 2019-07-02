@@ -91,6 +91,7 @@ function updateController(){
 function Controller(){
   console.log("Run controller script");
   var dir = __dirname + "/Python/controller.py";
+  console.log(json.controller);
   require('child_process').exec("python " + dir + " " + json.controller, function (err, stdout, stderr) {
     if (err) {
       return console.log(err);
