@@ -26,7 +26,7 @@
   "author": "Andrew Voss",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.8.4",
+    "electron": "^7.2.4",
     "electron-installer-dmg": "^0.2.1",
     "electron-packager": "^12.1.0",
     "electron-rebuild": "^1.7.3"
