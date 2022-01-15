@@ -38,6 +38,6 @@
     "lodash": "^4.17.5",
     "npm": "^6.1.0",
     "open-in-editor": "^2.2.0",
-    "shelljs": "^0.8.1"
+    "shelljs": "^0.8.5"
   }
 }
